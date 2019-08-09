@@ -1,4 +1,6 @@
 // https://docs.cs50.net/2018/x/psets/1/mario/less/mario.html
+// Implement a program that prints out a half-pyramid of a specified height.
+
 #include <stdio.h>
 #include <cs50.h>
 

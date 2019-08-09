@@ -1,0 +1,63 @@
+<!--
+https://docs.cs50.net/2019/x/psets/5/homepage/homepage.html
+Build a simple homepage using HTML and CSS.
+Original theme from Mark Otto, Jacob Thornton, and Bootstrap contributors
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <title>My webpage for CS50</title>
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="masthead mb-auto">
+        <div class="inner">
+          <h3 class="masthead-brand">Hi CS50</h3>
+          <nav class="nav nav-masthead justify-content-center">
+            <a class="nav-link active" href="/index.html">Home</a>
+            <a class="nav-link" href="/me.html">About me</a>
+            <a class="nav-link" href="/cs50.html">About CS50</a>
+            <a class="nav-link" href="/contact.html">Contact me</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="inner cover">
+        <h1 class="cover-heading">Welcome !</h1>
+        <p class="lead mt-4">
+          This is my webpage for CS50 project 5.
+        </p>
+        <img
+          id="home-image"
+          src="https://www.edx.org/sites/default/files/course/image/promoted/cs50.jpg"
+          alt="CS50 illustration"
+        />
+        <p class="lead mt-4">
+          <a href="/cs50.html" class="btn btn-lg btn-secondary">Learn more</a>
+        </p>
+      </main>
+
+      <footer class="mastfoot mt-auto">
+        <div class="inner">
+          <p>
+            Cover template by
+            <a href="https://twitter.com/mdo" title="@mdo">@mdo</a>, photo by
+            <a
+              href="https://unsplash.com/@mjaleo?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+              title="Michael Aleo"
+              >Michael Aleo</a
+            >
+            on <a href="https://unsplash.com" title="Unsplash">Unsplash</a>.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 // https://docs.cs50.net/2018/x/psets/1/cash/cash.html
+// Implement a program that calculates the minimum number of coins required to give a user change.
 
 #include <stdio.h>
 #include <stdlib.h>
