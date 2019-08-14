@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+                <th>Transacted</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movement in movements %}
+                <tr>
+                    <td>{{ movement.symbol }}</td>
+                    <td>{{ movement.company }}</td>
+                    <td>{{ movement.movement }}</td>
+                    <td>{{ movement.unit_value }}</td>
+                    <td>{{ movement.total_value }}</td>
+                    <td>{{ movement.created_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

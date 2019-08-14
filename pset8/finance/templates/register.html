@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+
+{% block title %} Register {% endblock %}
+
+{% block main %}
+
+{% if success %}
+
+<div style="color:green">You have been registered!</div><br />
+<div><a href="/login"><button class="btn btn-primary">You can now log in</button></a></div>
+
+{% else %}
+
+<form action="/register" method="post" id="register-form">
+  <div class="form-group">
+    <input
+      autocomplete="off"
+      autofocus
+      class="form-control"
+      name="username"
+      placeholder="Username"
+      type="text"
+      id="username-input"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      name="password"
+      placeholder="Password"
+      type="password"
+      required
+      autocomplete="off"
+    />
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      name="confirmation"
+      placeholder="Password (again)"
+      type="password"
+      required
+      autocomplete="off"
+    />
+  </div>
+  <button class="btn btn-primary" type="submit" id="register-form-submit">
+    Register
+  </button>
+</form>
+
+{% endif %}
+
+<script>
+  let usernameAvailable = false;
+
+  /* USERNAME LIVE CHECK START */
+  document
+    .getElementById("username-input")
+    .addEventListener("blur", function(evt) {
+      const req = fetch(`/check?username=${this.value}`)
+        .then(data =>
+          data.json().then(res => {
+            if (res) {
+              document.getElementById("username-input").className =
+                "form-control is-valid";
+              let prevNode = document.getElementById("username-input-feedback");
+
+              if (prevNode) {
+                prevNode.remove();
+              }
+
+              let node = document.createElement("div");
+              node.id = "username-input-feedback";
+              node.append("Username is available!");
+              node.className = "valid-feedback";
+
+              document
+                .getElementById("username-input")
+                .parentElement.append(node);
+
+              usernameAvailable = true;
+            } else {
+              document.getElementById("username-input").className =
+                "form-control is-invalid";
+              let prevNode = document.getElementById("username-input-feedback");
+
+              if (prevNode) {
+                prevNode.remove();
+              }
+
+              let node = document.createElement("div");
+              node.id = "username-input-feedback";
+              node.append("Username is not available!");
+              node.className = "invalid-feedback";
+
+              document
+                .getElementById("username-input")
+                .parentElement.append(node);
+
+              usernameAvailable = false;
+            }
+          })
+        )
+        .catch(err => console.log(err));
+    });
+  /* USERNAME LIVE CHECK END */
+
+  function submitForm() {
+    if (usernameAvailable) {
+      document.getElementById("register-form").submit();
+    } else {
+      // nop
+    }
+  }
+
+  document
+    .getElementById("register-form-submit")
+    .addEventListener("click", function(event) {
+      event.preventDefault();
+      submitForm();
+    });
+</script>
+
+{% endblock %}
